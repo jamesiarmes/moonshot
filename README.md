@@ -12,3 +12,21 @@ The software is relying on a single CloudFormation stack and supported by plugga
 Read the documentation at __insert_link_here_to_read_the_docs__ or see the docs folder.
 
 Discussions and support: Please see the issues in the current repository
+
+
+## Installation
+
+Add this line to your application's Gemfile:
+
+    gem 'moonshot'
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install moonshot
+
+## Usage
+
