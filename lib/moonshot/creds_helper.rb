@@ -22,7 +22,7 @@ module Moonshot
     end
 
     def s3_client
-      Aws::S3::Client.new
+      Aws::S3::Client.new(region: 'us-east-1')
     end
   end
 end
