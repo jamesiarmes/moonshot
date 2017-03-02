@@ -121,6 +121,8 @@ module Moonshot::BuildMechanism
       return if hub_release_exists(semver)
 
       message = "#{semver}\n\n#{changelog_entry}"
+      sh_step('hub --version') { |s, o| log.info(o) }
+      sh_step('hub browse -u -- releases') { |s, o| log.info(o) }
       cmd = "hub release create #{semver} --commitish=#{commitish}"
       cmd << ' --prerelease' if semver.pre || semver.build
       cmd << " --message=#{Shellwords.escape(message)}"
