@@ -14,9 +14,9 @@ module Moonshot
       end
 
       def cli_hook(parser)
-        parser.on('-sPATH', '--destination-path=PATH',
-                  'Destination path for the dynamically generated template', String) do |value|
-          @dynamic_template.destination = value
+        parser.on('--template-file=FILE', 'Override the path to the CloudFormation template.') do |v| # rubocop:disable LineLength
+          @dynamic_template.destination = v
+          Moonshot.config.template_file = v
         end
       end
 

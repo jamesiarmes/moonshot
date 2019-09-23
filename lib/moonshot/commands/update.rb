@@ -22,6 +22,10 @@ module Moonshot
         parser.on('--refresh-parameters', TrueClass, 'Update parameters from parent stacks') do |v|
           @refresh_parameters = v
         end
+
+        parser.on('--template-file=FILE', 'Override the path to the CloudFormation template.') do |v| # rubocop:disable LineLength
+          Moonshot.config.template_file = v
+        end
       end
 
       def execute
