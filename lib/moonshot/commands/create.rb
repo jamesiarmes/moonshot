@@ -21,6 +21,10 @@ module Moonshot
         parser.on('--version VERSION_NAME', 'Version for initial deployment. If unset, a new development build is created from the local directory') do |v| # rubocop:disable LineLength
           @version = v
         end
+
+        parser.on('--template-file=FILE', 'Override the path to the CloudFormation template.') do |v| # rubocop:disable LineLength
+          Moonshot.config.template_file = v
+        end
       end
 
       def execute

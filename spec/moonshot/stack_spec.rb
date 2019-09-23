@@ -152,5 +152,17 @@ describe Moonshot::Stack do
       expect { subject.template }
         .to raise_error(RuntimeError, /No template found/)
     end
+
+    context 'a custom template file is specified' do
+      let(:custom_path) { File.join(Dir.pwd, 'moonshot', 'custom.json') }
+
+      before(:each) do
+        config.template_file = custom_path
+      end
+
+      it 'should load the custom template' do
+        expect(subject.template.filename).to eq(custom_path)
+      end
+    end
   end
 end

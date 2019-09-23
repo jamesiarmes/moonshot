@@ -157,7 +157,14 @@ module Moonshot
           File.join(@config.project_root, 'cloud_formation', "#{@config.app_name}.json"))
       ]
 
+      # If a template file has been specified in the config, look there first.
+      if @config.template_file
+        templates.unshift YamlStackTemplate.new(@config.template_file)
+        templates.unshift JsonStackTemplate.new(@config.template_file)
+      end
+
       template = templates.find(&:exist?)
+
       raise 'No template found in moonshot/template.{yml,json}!' unless template
       template
     end
